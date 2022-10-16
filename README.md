@@ -1,5 +1,5 @@
 # ytCord
- Download youtube songs through discord
+ Download youtube songs through discord.  
  supports video name and url.
  
 # Installation
