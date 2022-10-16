@@ -37,7 +37,7 @@ module.exports = {
       lyricsEmbed.setFooter({
         text: "Powered by Genius API.",
         iconURL:
-          "https://media.discordapp.net/attachments/966001253991735326/1030646223935389777/genius.png",
+          "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/v1435674560/mjmgr50tv69vt5pmzeib.png",
       });
 
       getSong({
