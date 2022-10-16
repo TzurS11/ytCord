@@ -1,9 +1,6 @@
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
 
-const lyricssearchermusixmatch = require("lyrics-searcher-musixmatch").default;
-const lyricsFinder = require("@jeve/lyrics-finder");
-
 const {
   EmbedBuilder,
   ActionRowBuilder,
