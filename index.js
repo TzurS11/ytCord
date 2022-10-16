@@ -10,8 +10,6 @@ const {
 } = require("discord.js");
 const client = new Client({ intents: 3276543, partials: ["CHANNEL"] });
 
-let defaultPrefix = "!";
-
 const fs = require("fs");
 const path = require("path");
 const ytdl = require("ytdl-core");
