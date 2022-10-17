@@ -1,15 +1,6 @@
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
 
-const {
-  EmbedBuilder,
-  ActionRowBuilder,
-  ButtonBuilder,
-  ButtonStyle,
-} = require("discord.js");
-
-const fs = require("fs");
-
 module.exports = async (err, files, client) => {
   if (err) return console.error(err);
 

@@ -1,15 +1,8 @@
-const { getLyrics, getSong, searchSong } = require("genius-lyrics-api");
+const { getSong } = require("genius-lyrics-api");
 
 const songSet = require("../songSet");
 
-const {
-  EmbedBuilder,
-  ActionRowBuilder,
-  ButtonBuilder,
-  ButtonStyle,
-} = require("discord.js");
-
-const fs = require("fs");
+const { EmbedBuilder } = require("discord.js");
 
 //To lazy to figure out how to make a button handler. this will do because fuck this bullshit.
 

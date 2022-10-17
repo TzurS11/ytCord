@@ -1,4 +1,4 @@
-const { getLyrics, getSong, searchSong } = require("genius-lyrics-api");
+const { getSong } = require("genius-lyrics-api");
 
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const {

@@ -10,7 +10,6 @@ const {
 const songSet = require("../songSet");
 
 const fs = require("fs");
-const path = require("path");
 const ytdl = require("ytdl-core");
 const youtube = require("youtube-search-api");
 
