@@ -1,19 +1,7 @@
-const {
-  Client,
-  Collection,
-  GatewayIntentBits,
-  EmbedBuilder,
-  ActionRowBuilder,
-  ButtonBuilder,
-  ButtonStyle,
-  InteractionCollector,
-} = require("discord.js");
+const { Client, Collection } = require("discord.js");
 const client = new Client({ intents: 3276543, partials: ["CHANNEL"] });
 
 const fs = require("fs");
-const path = require("path");
-const ytdl = require("ytdl-core");
-const youtube = require("youtube-search-api");
 require("dotenv").config();
 
 client.aliases = new Collection();
