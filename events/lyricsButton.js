@@ -14,17 +14,21 @@ const {
 module.exports = {
   event: "interactionCreate",
   once: false,
-  async execute(interaction) {
+  async execute(interaction, client) {
     if (!interaction.isButton()) return;
     try {
       await interaction.deferReply({ ephemeral: true });
-      const client = interaction.client;
 
       if (interaction.customId.startsWith("lyrics")) {
         let songId = interaction.customId.split(" ")[1];
         let lyricsEmbed = new EmbedBuilder();
-        let songName = songSet.Get(songId);
-        if (songName == false) {
+        let songInfo = songSet.Get(songId);
+        if (songInfo != false && interaction.user.id != songInfo[2]) {
+          return interaction.followUp(
+            "You are not the owner of the message that you are trying to interact with."
+          );
+        }
+        if (songInfo == false) {
           let errorRow = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
               .setCustomId(`lyrics ${songId}`)
@@ -43,18 +47,18 @@ module.exports = {
             "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/v1435674560/mjmgr50tv69vt5pmzeib.png",
         });
         lyricsEmbed.setColor("#ffff7d");
-        // lyricsEmbed.setTitle("Lyrics for: " + songName[1]);
+        // lyricsEmbed.setTitle("Lyrics for: " + songInfo[1]);
 
         getSong({
           apiKey: process.env.GENIUS_TOKEN,
-          title: songName[0],
+          title: songInfo[0],
           artist: " ",
           optimizeQuery: true,
         }).then((lyrics) => {
           if (lyrics == null) {
             return getSong({
               apiKey: process.env.GENIUS_TOKEN,
-              title: songName[1],
+              title: songInfo[1],
               artist: " ",
               optimizeQuery: true,
             }).then((lyrics) => {

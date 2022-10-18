@@ -92,7 +92,14 @@ module.exports = {
               files: [fileName],
             })
             .then((message) => {
-              songSet.Add(songId, songName, res.items[0].title, 35000);
+              songSet.Add(
+                songId,
+                songName,
+                res.items[0].title,
+                interaction.user.id,
+                35000
+              );
+              songSet.Debug();
               fs.unlink(fileName, (e) => {});
               setTimeout(function () {
                 songRow.components[0].setDisabled(true);
