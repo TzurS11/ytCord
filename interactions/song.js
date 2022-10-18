@@ -99,7 +99,6 @@ module.exports = {
                 interaction.user.id,
                 35000
               );
-              songSet.Debug();
               fs.unlink(fileName, (e) => {});
               setTimeout(function () {
                 songRow.components[0].setDisabled(true);
