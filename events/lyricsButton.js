@@ -2,7 +2,12 @@ const { getSong } = require("genius-lyrics-api");
 
 const songSet = require("../songSet");
 
-const { EmbedBuilder } = require("discord.js");
+const {
+  EmbedBuilder,
+  ActionRowBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+} = require("discord.js");
 
 //To lazy to figure out how to make a button handler. this will do because fuck this bullshit.
 
@@ -20,6 +25,14 @@ module.exports = {
         let lyricsEmbed = new EmbedBuilder();
         let songName = songSet.Get(songId);
         if (songName == false) {
+          let errorRow = new ActionRowBuilder().addComponents(
+            new ButtonBuilder()
+              .setCustomId(`lyrics ${songId}`)
+              .setLabel("Lyrics")
+              .setStyle(ButtonStyle.Success)
+              .setDisabled(true)
+          );
+          interaction.message.edit({ components: [errorRow] });
           return interaction.followUp(
             "There was an error getting the lyrics for the song."
           );
