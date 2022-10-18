@@ -11,6 +11,5 @@
 
 # What to expect
 
-<img width="500px" src="https://user-images.githubusercontent.com/90769470/196065990-fec6b876-cadf-4d04-a45c-f544c4fb305e.png">
-
-<img width="500px" src="https://user-images.githubusercontent.com/90769470/196066085-4046aa30-0487-483e-ad82-e403967bad3e.png">
+<img class="image" width="500px" src="https://user-images.githubusercontent.com/90769470/196065990-fec6b876-cadf-4d04-a45c-f544c4fb305e.png">
+<img class="image" width="500px" src="https://user-images.githubusercontent.com/90769470/196066085-4046aa30-0487-483e-ad82-e403967bad3e.png">
