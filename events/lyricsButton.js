@@ -68,7 +68,7 @@ module.exports = {
                     "Lyrics are being fetched from the Genius API.\nThe user input is being used to search lyrics.\nTry to search more specifically next time.",
                 });
               }
-              lyricsEmbed.setTitle("Lyrics for: " + lyrics.title);
+              lyricsEmbed.setTitle(lyrics.title);
               lyricsEmbed.setURL(lyrics.url);
               lyricsEmbed.setThumbnail(lyrics.albumArt);
               try {
@@ -83,7 +83,7 @@ module.exports = {
               }
             });
           }
-          lyricsEmbed.setTitle("Lyrics for: " + lyrics.title);
+          lyricsEmbed.setTitle(lyrics.title);
           lyricsEmbed.setURL(lyrics.url);
           lyricsEmbed.setThumbnail(lyrics.albumArt);
           try {
