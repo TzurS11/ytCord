@@ -44,7 +44,7 @@ module.exports = {
         .setMaxLength(100)
     ),
 
-  execute(interaction, client) {
+  async execute(interaction, client) {
     interaction.deferReply();
     const songName = interaction.options.getString("name");
     youtube.GetListByKeyword(songName, true, 2).then((res) => {
