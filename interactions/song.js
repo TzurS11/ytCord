@@ -7,6 +7,16 @@ const {
   ActivityType,
 } = require("discord.js");
 
+// require("dotenv").config();
+
+const Spotify = require("spotify-finder");
+const spotify = new Spotify({
+  consumer: {
+    key: process.env.SPOTIFY_KEY, // from v2.1.0 is required
+    secret: process.env.SPOTIFY_SECRET, // from v2.1.0 is required
+  },
+});
+
 const songSet = require("../songSet");
 
 const fs = require("fs");
@@ -47,6 +57,7 @@ module.exports = {
   async execute(interaction, client) {
     interaction.deferReply();
     const songName = interaction.options.getString("name");
+
     youtube.GetListByKeyword(songName, true, 2).then((res) => {
       if (res.items[0].type == "channel" || res.items.length == 0) {
         return interaction.followUp("Song Doesnt Exist");
@@ -60,23 +71,38 @@ module.exports = {
         format: "audioonly",
         quality: "140",
       }).pipe(
-        fs.createWriteStream(fileName).on("finish", () => {
+        fs.createWriteStream(fileName).on("finish", async () => {
           let songEmbed = new EmbedBuilder()
             .setTitle(res.items[0].title)
-            .setURL("https://www.youtube.com/watch?v=" + songId)
+            // .setURL("https://www.youtube.com/watch?v=" + songId)
             .setAuthor({ name: res.items[0].channelTitle })
-            .setThumbnail(
-              res.items[0].thumbnail.thumbnails[
-                res.items[0].thumbnail.thumbnails.length - 1
-              ].url
-            )
+            // .setThumbnail(
+            //   res.items[0].thumbnail.thumbnails[
+            //     res.items[0].thumbnail.thumbnails.length - 1
+            //   ].url
+            // )
             .setDescription(`${res.items[0].length.simpleText}`);
           let songRow = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
               .setCustomId(`lyrics ${songId}`)
               .setLabel("Lyrics")
-              .setStyle(ButtonStyle.Success)
+              .setStyle(ButtonStyle.Success),
+            new ButtonBuilder()
+              .setURL("https://www.youtube.com/watch?v=" + songId)
+              .setLabel("Youtube")
+              .setStyle(ButtonStyle.Link)
           );
+          await spotify.search({ q: songName, limit: "1" }).then((data) => {
+            if (data.tracks.items.length == 0) return;
+            return songRow.addComponents(
+              new ButtonBuilder()
+                .setURL(
+                  "https://open.spotify.com/track/" + data.tracks.items[0].id
+                )
+                .setLabel("Spotify")
+                .setStyle(ButtonStyle.Link)
+            );
+          });
 
           client.user.setPresence({
             activities: [

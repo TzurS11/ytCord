@@ -9,10 +9,6 @@ const {
   ActivityType,
 } = require("discord.js");
 
-const fs = require("fs");
-const path = require("path");
-const ytdl = require("ytdl-core");
-const youtube = require("youtube-search-api");
 
 module.exports = {
   data: new SlashCommandBuilder()
