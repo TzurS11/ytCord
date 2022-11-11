@@ -7,6 +7,8 @@
 2. Create a .env file and add the parameters:
    - DISCORD_TOKEN => [Get it from the discord developer portal](https://discord.com/developers/applications).
    - GENIUS_TOKEN => [Get it from the genius api](https://genius.com/api-clients) (CLIENT ACCESS TOKEN).
+   - SPOTIFY_KEY => [Get it from the spotify web API]
+   - SPOTIFY_SECRET => [Get it from the spotify web API]
 3. Run `node index.js` inside the terminal.
 
 # What to expect
